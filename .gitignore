@@ -1,0 +1,5 @@
+# Ignore all CSV files inside the cleaned_data folder
+data/cleaned_data/*.csv
+
+# Keep the directory structure
+!data/cleaned_data/
